@@ -1,6 +1,6 @@
 import unittest
 
-from filter_plugins.vswitch_list import *
+from ansible_filter_hetzner.vswitch_list import *
 
 
 class VSwitchListTest(unittest.TestCase):

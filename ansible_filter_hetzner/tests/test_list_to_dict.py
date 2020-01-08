@@ -1,6 +1,6 @@
 import unittest
 
-from filter_plugins.list_to_dict import *
+from ansible_filter_hetzner.list_to_dict import *
 
 
 class ListToDictTest(unittest.TestCase):

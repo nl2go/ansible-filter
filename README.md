@@ -15,7 +15,10 @@ A Simple Example
 
 Here's how you could use.
 
-    from ansible_filter_hetzner import change_set
+    >>> from ansible_filter_hetzner import change_set
+    >>> obj_arr = [{"ansible": "filter"}]
+    >>> change_set.array_to_dict(obj_arr, "ansible")
+    {'filter': {'ansible': 'filter'}}
 
 
 Links

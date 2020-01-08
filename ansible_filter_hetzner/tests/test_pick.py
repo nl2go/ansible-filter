@@ -1,6 +1,6 @@
 import unittest
 
-from filter_plugins.pick import *
+from ansible_filter_hetzner.pick import *
 
 
 class PickTest(unittest.TestCase):
