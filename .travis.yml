@@ -11,9 +11,9 @@ deploy:
   user: nl2go
   password:
     secure: S4xgi1D/onc54+EGKEIxpQEU+lAr5mljcgFdWKmzZsKkCVEp9CHnDVHcPjue9XPAeCHxcSQro1mUW/F0MSM9devqKWkbFVhfdv4Q16BRZ0IEt6RaeVNDozFdy+6EcI+PuiV/DvQqoalR3CwDdyWkm1bzrbTaPzJmqHjxRhngQ2pcUQ8Dq+QEUAwS47qxb1Lzfvv86f3gIxsfLsEG/sz0EEx53lY8jw/hbkwTAuvQRdbKmATFDE7L4Wf8Grr3NFku94OskWfyowLar7ICAcuFoXhzI1fav52k0zpTDSsOk3I8H51KS/upgk6xlnNyumeRIAxeuwDF4T1UO93nD2nQT/4DYLa7p5TJ0KGQBQoDUuofiHwhCwzuYm7/32Oa2zwHhNZp6YQdzFyUABNWSPSL2Z1018u+Ph2jPox2cNpwQPA5m5GDRfsv6/SUSM+68H0oUwr2KaS89soKk8lFQ3qcL5UTc6rW1uWfTaNS/77/mjGtYIy5Md2mIrvHr6BylRZI1PqBkDVvkdJ9RrMQaHXUUoYY6Opsg0qHfamLMkG2wQVW7qiv9rdEqWZ6RSgYBurHVEf77xDE/cYEjb3uIJNxGZ5dPt4KPXakmuw13KMHwcHWd56b2VBnwSTsCKGEyvwzXAWqaYHIMCmFfgB8a0IDi4rQPOeFc3i8C0KXbwKNPRA=
+  skip_cleanup: true
   on:
     tags: true
-    skip_cleanup: true
 
 after_script:
   - codecov
