@@ -1,3 +1,6 @@
+#!/usr/bin/python
+
+
 TEMPLATE_DEFAULTS = {
     'whitelist_hos': False,
     'is_default': False
@@ -42,5 +45,5 @@ class FilterModule(object):
 
     def filters(self):
         return {
-            'hetzner_firewall_template_defaults': template_defaults
+            'hetzner_template_defaults': template_defaults
         }

@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 import copy
 
 STATE_KEY = 'state'
@@ -182,5 +184,5 @@ class FilterModule(object):
 
     def filters(self):
         return {
-            'hetzner_firewall_change_set': change_set
+            'hetzner_change_set': change_set
         }

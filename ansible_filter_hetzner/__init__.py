@@ -4,4 +4,4 @@ from . import omit
 from . import template_defaults
 
 
-__version__ = "100001"
+__version__ = "1.0"

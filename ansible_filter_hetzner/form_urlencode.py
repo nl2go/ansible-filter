@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 from ansible.module_utils.six.moves.urllib.parse import quote
 
 
@@ -53,5 +55,5 @@ class FilterModule(object):
 
     def filters(self):
         return {
-            'hetzner_firewall_form_urlencode': form_urlencode
+            'hetzner_form_urlencode': form_urlencode
         }
