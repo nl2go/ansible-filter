@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-from ansible.module_utils.six.moves.urllib.parse import quote
+from urllib.parse import quote
 
 
 def form_urlencode(obj, is_root=True, namespace=''):
@@ -41,14 +41,13 @@ def get_namespace(key, is_root):
 
 def serialize_value(obj):
     if isinstance(obj, bool):
-        if obj:
-            return 'true'
-        else:
-            return 'false'
+        result = str(obj).lower()
     elif obj is None:
-        return 'null'
+        result = 'null'
     else:
-        return quote(str(obj));
+        result = quote(str(obj))
+
+    return result
 
 
 class FilterModule(object):

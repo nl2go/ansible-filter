@@ -2,6 +2,8 @@
 
 import copy
 
+from ansible_filter_hetzner.helpers import array_to_dict
+
 STATE_KEY = 'state'
 STATE_PRESENT = 'present'
 STATE_ABSENT = 'absent'
@@ -15,16 +17,6 @@ ACTION_DELETE = 'delete'
 OBJ_KEY = 'value'
 
 
-def array_to_dict(obj_array, attr='name'):
-    obj_dict = {}
-
-    for obj in obj_array:
-        key = obj.get(attr)
-        obj_dict[key] = obj
-
-    return obj_dict
-
-
 def dict_to_array(obj_dict):
     obj_array = []
 
@@ -36,22 +28,18 @@ def dict_to_array(obj_dict):
 
 def get_action(local_obj, origin_obj, state, origin_default):
     if not origin_obj:
-        if state == STATE_PRESENT:
-            return ACTION_CREATE
-        else:
-            return ACTION_NOOP
+        result = ACTION_CREATE if state == STATE_PRESENT else ACTION_NOOP
     elif is_equal_obj(local_obj, origin_obj):
         if state == STATE_PRESENT:
-            return ACTION_NOOP
+            result = ACTION_NOOP
         elif is_equal_obj(origin_default, origin_obj):
-            return ACTION_NOOP
+            result = ACTION_NOOP
         else:
             return ACTION_DELETE
     else:
-        if state == STATE_PRESENT:
-            return ACTION_UPDATE
-        else:
-            return ACTION_DELETE
+        result = ACTION_UPDATE if state == STATE_PRESENT else ACTION_DELETE
+
+    return result
 
 
 def str2bool(v):
@@ -146,20 +134,16 @@ def change_set(local, origin, origin_default=None, attr='name'):
         return result_dict
 
     if is_dict(local):
-        if not isinstance(origin, dict):
-            origin = {}
+        origin = {} if not is_dict(origin) else origin
         change_set_item(result_dict, local, origin, origin_default)
+
         return result_dict
 
     if is_list(local):
         local_dict = array_to_dict(local, attr)
-
-        if not isinstance(origin, list):
-            origin_dict = {}
-        else:
-            origin_dict = array_to_dict(origin, attr)
-
+        origin_dict = {} if not is_list(origin) else array_to_dict(origin, attr)
         change_set_items(result_dict, local_dict, origin_dict, origin_default)
+
         return result_dict
 
     raise TypeError('Can not build change set for given objects: ' + str(local) + ", " + str(origin))

@@ -27,7 +27,7 @@ setup(name='ansible-filter-hetzner',
       license='MIT',
       packages=['ansible_filter_hetzner'],
       python_requires='>=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*',
-      install_requires=["ansible==2.9.2"],
+      install_requires=[],
       classifiers=[
           "Programming Language :: Python :: 2",
           "Programming Language :: Python :: 2.7",

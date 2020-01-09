@@ -1,14 +1,6 @@
 #!/usr/bin/python
 
-
-def list_to_dict(obj_array, attr='name'):
-    obj_dict = {}
-
-    for obj in obj_array:
-        key = obj.get(attr)
-        obj_dict[key] = obj
-
-    return obj_dict
+from ansible_filter_hetzner.helpers import array_to_dict as list_to_dict
 
 
 class FilterModule(object):

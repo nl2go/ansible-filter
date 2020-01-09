@@ -1,5 +1,7 @@
 #!/usr/bin/python
 
+from ansible_filter_hetzner.helpers import array_to_dict
+
 
 def group_by(lefts, rights, attr='name'):
     results = []
@@ -12,16 +14,6 @@ def group_by(lefts, rights, attr='name'):
             result['group'].append(right)
             results.append(result)
     return results
-
-
-def array_to_dict(obj_array, attr='name'):
-    obj_dict = {}
-
-    for obj in obj_array:
-        key = obj.get(attr)
-        obj_dict[key] = obj
-
-    return obj_dict
 
 
 class FilterModule(object):
