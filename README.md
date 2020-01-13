@@ -15,6 +15,13 @@ Install and update using [pip](https://pip.pypa.io/en/stable/quickstart/):
     pip install -U ansible-filter-hetzner
 
 
+Install from source:
+
+    git clone git@github.com:nl2go/ansible-filter-hetzner.git
+    cd ansible-filter-hetzner/
+    pip install .
+
+
 ## A Simple Example
 
 Here's how you could use.

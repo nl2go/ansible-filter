@@ -1,3 +1,4 @@
+import sys
 import unittest
 
 from ansible_filter_hetzner.vswitch_list import *
@@ -42,4 +43,7 @@ class VSwitchListTest(unittest.TestCase):
         ]
         actual_results = vswitch_list(host_vars, hosts)
 
-        self.assertItemsEqual(expected_results, actual_results)
+        if sys.version_info.major == 2:
+            self.assertItemsEqual(expected_results, actual_results)
+        else:
+            self.assertListEqual(expected_results, actual_results)

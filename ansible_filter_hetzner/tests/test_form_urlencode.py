@@ -1,3 +1,4 @@
+import sys
 import unittest
 
 from ansible_filter_hetzner.form_urlencode import *
@@ -60,4 +61,7 @@ class FormUrlencodeTest(unittest.TestCase):
         encoded_str = form_urlencode(obj)
         actual = encoded_str.split("&")
 
-        self.assertItemsEqual(expected, actual)
+        if sys.version_info.major == 2:
+            self.assertItemsEqual(expected, actual)
+        else:
+            self.assertListEqual(expected, actual)
