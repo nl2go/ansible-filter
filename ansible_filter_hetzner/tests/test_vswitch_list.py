@@ -42,4 +42,4 @@ class VSwitchListTest(unittest.TestCase):
         ]
         actual_results = vswitch_list(host_vars, hosts)
 
-        self.assertEqual(expected_results, actual_results)
+        self.assertItemsEqual(expected_results, actual_results)

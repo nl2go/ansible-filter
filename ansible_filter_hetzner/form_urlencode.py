@@ -1,6 +1,9 @@
 #!/usr/bin/python
 
-from urllib.parse import quote
+try:
+    from urllib.parse import quote
+except ImportError:
+    from urllib import quote
 
 
 def form_urlencode(obj, is_root=True, namespace=''):

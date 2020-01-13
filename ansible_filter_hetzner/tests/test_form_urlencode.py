@@ -55,7 +55,9 @@ class FormUrlencodeTest(unittest.TestCase):
             }
         }
         expected_encoded_str = 'id=123&whitelist_hos=true&is_default=false&rules[input][0][ip_version]=ipv4&rules[input][0][src_port]=null&rules[input][0][name]=rule%201&rules[input][0][src_ip]=1.1.1.1&rules[input][0][dst_port]=80&rules[input][0][action]=accept&'
+        expected = expected_encoded_str.split("&")
 
         encoded_str = form_urlencode(obj)
+        actual = encoded_str.split("&")
 
-        self.assertEqual(encoded_str, expected_encoded_str)
+        self.assertItemsEqual(expected, actual)
