@@ -9,4 +9,4 @@ def omit(obj, attributes):
     elif isinstance(obj, list):
         return filter_list(obj, attributes, TYPE_OMIT)
 
-    raise TypeError('Given object is whether a dictionary nor a list.')
+    raise TypeError('Given object is neither a dictionary nor a list.')
