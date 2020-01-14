@@ -30,12 +30,7 @@ def get_action(local_obj, origin_obj, state, origin_default):
     if not origin_obj:
         result = ACTION_CREATE if state == STATE_PRESENT else ACTION_NOOP
     elif is_equal_obj(local_obj, origin_obj):
-        if state == STATE_PRESENT:
-            result = ACTION_NOOP
-        elif is_equal_obj(origin_default, origin_obj):
-            result = ACTION_NOOP
-        else:
-            return ACTION_DELETE
+        result = ACTION_NOOP if state == STATE_PRESENT or is_equal_obj(origin_default, origin_obj) else ACTION_DELETE
     else:
         result = ACTION_UPDATE if state == STATE_PRESENT else ACTION_DELETE
 
@@ -47,11 +42,8 @@ def str2bool(v):
 
 
 def is_equal_obj(local_obj, origin_obj):
-    if is_all_empty(local_obj, origin_obj):
+    if is_all_empty(local_obj, origin_obj) or is_any_bool(local_obj, origin_obj):
         return True
-
-    if is_any_bool(local_obj, origin_obj):
-        return is_equal_bool(local_obj, origin_obj)
 
     if is_all_dict(local_obj, origin_obj):
         for key, local_value in local_obj.items():
