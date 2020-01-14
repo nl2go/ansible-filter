@@ -1,6 +1,7 @@
 import unittest
 
-from ansible_filter_hetzner.change_set import *
+import copy
+from ansible_filter_hetzner.change_set import change_set
 
 
 class ChangeSetTest(unittest.TestCase):
