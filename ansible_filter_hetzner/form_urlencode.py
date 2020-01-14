@@ -10,17 +10,33 @@ def form_urlencode(obj, is_root=True, namespace=''):
     encoded_str = ''
 
     if isinstance(obj, list):
-        for i in range(len(obj)):
-            separator = get_separator(obj[i])
-            entry_namespace = namespace + get_namespace(str(i), is_root) + separator
-            encoded_str = encoded_str + form_urlencode(obj[i], False, entry_namespace)
+        encoded_str = form_urlencode_from_list(obj, is_root, namespace)
     elif isinstance(obj, dict):
-        for key in obj:
-            separator = get_separator(obj[key])
-            entry_namespace = namespace + get_namespace(key, is_root) + separator
-            encoded_str = encoded_str + form_urlencode(obj[key], False, entry_namespace)
+        encoded_str = form_urlencode_from_dict(obj, is_root, namespace)
     else:
         encoded_str = encoded_str + namespace + serialize_value(obj) + "&"
+
+    return encoded_str
+
+
+def form_urlencode_from_list(obj, is_root=True, namespace=''):
+    encoded_str = ''
+
+    for i in range(len(obj)):
+        separator = get_separator(obj[i])
+        entry_namespace = namespace + get_namespace(str(i), is_root) + separator
+        encoded_str = encoded_str + form_urlencode(obj[i], False, entry_namespace)
+
+    return encoded_str
+
+
+def form_urlencode_from_dict(obj, is_root=True, namespace=''):
+    encoded_str = ''
+
+    for key in obj:
+        separator = get_separator(obj[key])
+        entry_namespace = namespace + get_namespace(key, is_root) + separator
+        encoded_str = encoded_str + form_urlencode(obj[key], False, entry_namespace)
 
     return encoded_str
 
