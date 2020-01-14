@@ -12,6 +12,15 @@ def array_to_dict(obj_array, attr='name'):
     return obj_dict
 
 
+def filter_object(obj, attributes, filter_type):
+    if isinstance(obj, dict):
+        return filter_dict(obj, attributes, filter_type)
+    elif isinstance(obj, list):
+        return filter_list(obj, attributes, filter_type)
+
+    raise TypeError('Given object is neither a dictionary nor a list.')
+
+
 def filter_dict(obj_dict, attributes, filter_type):
     result_obj = {}
     for key, value in obj_dict.items():
