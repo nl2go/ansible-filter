@@ -42,24 +42,18 @@ def str2bool(v):
 
 
 def is_equal_obj(local_obj, origin_obj):
+    result = None
+
     if is_all_empty(local_obj, origin_obj) or is_any_bool(local_obj, origin_obj):
-        return True
-
-    if is_all_dict(local_obj, origin_obj):
-        for key, local_value in local_obj.items():
-            origin_value = origin_obj.get(key)
-            if not is_equal_obj(local_value, origin_value):
-                return False
+        result = True
+    elif is_all_dict(local_obj, origin_obj):
+        result = is_equal_dict(local_obj, origin_obj)
     elif is_list(local_obj) and is_list(origin_obj):
-        for i in range(len(local_obj)):
-            local_value = local_obj[i]
-            origin_value = origin_obj[i]
-            if not is_equal_obj(local_value, origin_value):
-                return False
+        result = is_equal_list(local_obj, origin_obj)
     elif local_obj != origin_obj:
-        return False
+        result = False
 
-    return True
+    return True if result is None else result
 
 
 def is_equal_bool(left, right):
@@ -68,6 +62,25 @@ def is_equal_bool(left, right):
     if not isinstance(right, bool):
         right = str2bool(right)
     return left is right
+
+
+def is_equal_list(left, right):
+    for i in range(len(left)):
+        local_value = left[i]
+        origin_value = right[i]
+        if not is_equal_obj(local_value, origin_value):
+            return False
+
+    return True
+
+
+def is_equal_dict(left, right):
+    for key, local_value in left.items():
+        origin_value = right.get(key)
+        if not is_equal_obj(local_value, origin_value):
+            return False
+
+    return True
 
 
 def is_any_bool(left, right):
