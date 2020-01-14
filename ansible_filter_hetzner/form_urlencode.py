@@ -51,11 +51,3 @@ def serialize_value(obj):
         result = quote(str(obj))
 
     return result
-
-
-class FilterModule(object):
-
-    def filters(self):
-        return {
-            'hetzner_form_urlencode': form_urlencode
-        }

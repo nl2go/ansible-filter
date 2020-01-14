@@ -162,11 +162,3 @@ def change_set_items(result_dict, local_dict, origin_dict, origin_default):
     for obj_key, local_obj in local_dict.items():
         origin_obj = origin_dict.get(obj_key)
         change_set_item(result_dict, local_obj, origin_obj, origin_default)
-
-
-class FilterModule(object):
-
-    def filters(self):
-        return {
-            'hetzner_change_set': change_set
-        }

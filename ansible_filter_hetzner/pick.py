@@ -23,11 +23,3 @@ def pick_list(obj_list, attributes):
     for obj in obj_list:
         result_list.append(pick_dict(obj, attributes))
     return result_list
-
-
-class FilterModule(object):
-
-    def filters(self):
-        return {
-            'hetzner_pick': pick
-        }

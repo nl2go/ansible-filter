@@ -23,11 +23,3 @@ def omit_list(obj_list, attributes):
     for obj in obj_list:
         result_list.append(omit_dict(obj, attributes))
     return result_list
-
-
-class FilterModule(object):
-
-    def filters(self):
-        return {
-            'hetzner_omit': omit
-        }

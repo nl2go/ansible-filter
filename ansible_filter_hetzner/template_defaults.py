@@ -39,11 +39,3 @@ def rule_defaults(rules):
                 result_rules[chain] = result_chain_rules
         return result_rules
     return {}
-
-
-class FilterModule(object):
-
-    def filters(self):
-        return {
-            'hetzner_template_defaults': template_defaults
-        }

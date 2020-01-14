@@ -14,11 +14,3 @@ def group_by(lefts, rights, attr='name'):
             result['group'].append(right)
             results.append(result)
     return results
-
-
-class FilterModule(object):
-
-    def filters(self):
-        return {
-            'hetzner_group_by': group_by
-        }
