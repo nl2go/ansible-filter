@@ -20,7 +20,7 @@ OBJ_KEY = 'value'
 def dict_to_array(obj_dict):
     obj_array = []
 
-    for obj_key, obj_value in obj_dict.iteritems():
+    for obj_key, obj_value in obj_dict.items():
         obj_array.append(obj_value)
 
     return obj_array
