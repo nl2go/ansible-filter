@@ -1,6 +1,6 @@
 import unittest
 
-from ansible_filter_hetzner.group_by import *
+from ansible_filter.group_by import *
 
 
 class VSwitchMergeTest(unittest.TestCase):

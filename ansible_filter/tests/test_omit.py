@@ -1,6 +1,6 @@
 import unittest
 
-from ansible_filter_hetzner.omit import *
+from ansible_filter.omit import *
 
 
 class OmitTest(unittest.TestCase):

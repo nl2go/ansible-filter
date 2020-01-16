@@ -4,7 +4,7 @@ before_script:
   - pip install ansible coverage codecov
 
 script:
-  - coverage run --source=ansible_filter_hetzner -m unittest discover ansible_filter_hetzner/tests
+  - coverage run --source=ansible_filter -m unittest discover ansible_filter/tests
 
 deploy:
   provider: pypi

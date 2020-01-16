@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-from ansible_filter_hetzner.helpers import array_to_dict
+from ansible_filter.helpers import array_to_dict
 
 
 def group_by(lefts, rights, attr='name'):

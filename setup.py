@@ -6,7 +6,7 @@ from setuptools import setup
 with io.open("README.md", "rt", encoding="utf8") as f:
     readme = f.read()
 
-with io.open("ansible_filter_hetzner/__init__.py", "rt", encoding="utf8") as f:
+with io.open("ansible_filter/__init__.py", "rt", encoding="utf8") as f:
     version = re.search(r'__version__ = "(.*?)"', f.read(), re.M).group(1)
 
 setup(name='ansible-filter-hetzner',
@@ -25,7 +25,7 @@ setup(name='ansible-filter-hetzner',
       maintainer="Newsletter2Go",
       maintainer_email="ops@newsletter2go.com",
       license='MIT',
-      packages=['ansible_filter_hetzner'],
+      packages=['ansible_filter'],
       python_requires='>=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*',
       install_requires=[],
       classifiers=[

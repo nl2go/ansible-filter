@@ -3,7 +3,7 @@ import unittest
 
 import copy
 
-from ansible_filter_hetzner.change_set import (
+from ansible_filter.change_set import (
     ACTION_CREATE,
     ACTION_UPDATE,
     ACTION_DELETE,

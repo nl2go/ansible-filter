@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-from ansible_filter_hetzner.helpers import filter_object, TYPE_OMIT
+from ansible_filter.helpers import filter_object, TYPE_OMIT
 
 
 def omit(obj, attributes):

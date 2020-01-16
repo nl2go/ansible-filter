@@ -1,7 +1,7 @@
 import sys
 import unittest
 
-from ansible_filter_hetzner.form_urlencode import *
+from ansible_filter.form_urlencode import *
 
 
 class FormUrlencodeTest(unittest.TestCase):

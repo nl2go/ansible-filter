@@ -1,8 +1,8 @@
-[![Travis (.com) branch](https://img.shields.io/travis/com/nl2go/ansible-filter-hetzner/master)](https://travis-ci.com/nl2go/ansible-filter-hetzner)
-[![Codecov](https://img.shields.io/codecov/c/github/nl2go/ansible-filter-hetzner)](https://codecov.io/gh/nl2go/ansible-filter-hetzner)
-[![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/nl2go/ansible-filter-hetzner)](https://codeclimate.com/github/nl2go/ansible-filter-hetzner)
-[![PyPI](https://img.shields.io/pypi/v/ansible-filter-hetzner)](https://pypi.org/project/ansible-filter-hetzner/#history)
-[![PyPI - Downloads](https://img.shields.io/pypi/dm/ansible-filter-hetzner)](https://pypi.org/project/ansible-filter-hetzner/#files)
+[![Travis (.com) branch](https://img.shields.io/travis/com/nl2go/ansible-filter/master)](https://travis-ci.com/nl2go/ansible-filter)
+[![Codecov](https://img.shields.io/codecov/c/github/nl2go/ansible-filter)](https://codecov.io/gh/nl2go/ansible-filter)
+[![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/nl2go/ansible-filter)](https://codeclimate.com/github/nl2go/ansible-filter)
+[![PyPI](https://img.shields.io/pypi/v/ansible-filter)](https://pypi.org/project/ansible-filter/#history)
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/ansible-filter)](https://pypi.org/project/ansible-filter/#files)
 
 # Ansible Filter Hetzner
 
@@ -16,12 +16,12 @@ Following functionality is provided:
 
 ### PyPI
 
-    pip install -U ansible-filter-hetzner
+    pip install -U ansible-filter
 
 ### Source
 
-    git clone git@github.com:nl2go/ansible-filter-hetzner.git
-    cd ansible-filter-hetzner/
+    git clone git@github.com:nl2go/ansible-filter.git
+    cd ansible-filter/
     pip install .
 
 ## Filters
@@ -42,7 +42,7 @@ The result is a change set with a map of lists to:
 Useful to interact with any kind of a stateful API.
 
 
-    from ansible_filter_hetzner import change_set
+    from ansible_filter import change_set
     
     local = [{ 'id': 1, 'foo': 'bar' }, { 'id': 2, 'foo': 'foo' }, { 'id': 3, 'foz':'baz' }, { 'id': 4, 'state': 'absent' }]
     origin = [{ 'id': 2, 'foo': 'bar' }, { 'id': 3, 'foz':'baz' }, { 'id': 4, 'x': 'y' }, { 'id': 5, 'foo': 'bar' }]
@@ -60,7 +60,7 @@ Useful to interact with any kind of a stateful API.
 ### Form URL Encode
 Encodes arbitrary objects to form URL format.
 
-    from ansible_filter_hetzner import form_urlencode
+    from ansible_filter import form_urlencode
     
     obj = { 'foo': 'bar', 'foz': ['baz'] }
     
@@ -72,7 +72,7 @@ Encodes arbitrary objects to form URL format.
 ### Pick
 Filters a list of objects retaining attributes only matching the names passed as argument, non-recursively.
 
-    from ansible_filter_hetzner import pick
+    from ansible_filter import pick
     
     elements = [{ 'foo': 'bar', 'foz': 'baz' }]
     
@@ -84,7 +84,7 @@ Filters a list of objects retaining attributes only matching the names passed as
 ### Omit
 Filters a list objects omitting attributes matching the names passed as argument, non-recursively.    
 
-    from ansible_filter_hetzner import omit
+    from ansible_filter import omit
     
     elements = [{ 'foo': 'bar', 'foz': 'baz' }]
     
@@ -96,7 +96,7 @@ Filters a list objects omitting attributes matching the names passed as argument
 ### Group By
 Groups elements by key attribute.
 
-    from ansible_filter_hetzner import group_by
+    from ansible_filter import group_by
     
     left = [{ 'id': '1', 'foo': 'a' }, { 'id': '2', 'foz': 'x' }]
     right = [{ 'id': '1', 'foo': 'b' }, { 'id': '2', 'foz': 'y' }]
@@ -112,7 +112,7 @@ Groups elements by key attribute.
 ### List 2 Dict
 Converts a list to dict by key attribute.
 
-    from ansible_filter_hetzner import list_to_dict
+    from ansible_filter import list_to_dict
     
     elements = [{ 'id': '1', 'foo': 'bar' }, { 'id': '2', 'foz': 'baz' }]
     
@@ -124,8 +124,8 @@ Converts a list to dict by key attribute.
 ## Links
 
 *   Website: https://newsletter2go.com/
-*   License: [MIT](https://github.com/nl2go/ansible-filter-hetzner/blob/master/LICENSE.md)
-*   Releases: https://pypi.org/project/ansible-filter-hetzner/
-*   Code: https://github.com/nl2go/ansible-filter-hetzner
-*   Issue tracker: https://github.com/nl2go/ansible-filter-hetzner/issues
+*   License: [MIT](https://github.com/nl2go/ansible-filter/blob/master/LICENSE.md)
+*   Releases: https://pypi.org/project/ansible-filter/
+*   Code: https://github.com/nl2go/ansible-filter
+*   Issue tracker: https://github.com/nl2go/ansible-filter/issues
 

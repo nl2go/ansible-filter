@@ -2,7 +2,7 @@
 
 import copy
 
-from ansible_filter_hetzner.helpers import array_to_dict
+from ansible_filter.helpers import array_to_dict
 
 STATE_KEY = 'state'
 STATE_PRESENT = 'present'
