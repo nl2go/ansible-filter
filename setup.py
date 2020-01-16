@@ -9,16 +9,16 @@ with io.open("README.md", "rt", encoding="utf8") as f:
 with io.open("ansible_filter/__init__.py", "rt", encoding="utf8") as f:
     version = re.search(r'__version__ = "(.*?)"', f.read(), re.M).group(1)
 
-setup(name='ansible-filter-hetzner',
+setup(name='ansible-filter',
       version=version,
       description='The filter module for Hetzner',
       long_description=readme,
       long_description_content_type="text/markdown",
       keywords='hetzner ansible filter',
-      url='https://github.com/nl2go/ansible-filter-hetzner',
+      url='https://github.com/nl2go/ansible-filter',
       project_urls={
-          "Code": "https://github.com/nl2go/ansible-filter-hetzner",
-          "Issue tracker": "https://github.com/nl2go/ansible-filter-hetzner/issues",
+          "Code": "https://github.com/nl2go/ansible-filter",
+          "Issue tracker": "https://github.com/nl2go/ansible-filter/issues",
       },
       author='Sanan Guliyev',
       author_email='sanan.quliyev@gmail.com',
