@@ -218,6 +218,14 @@ class ChangeSetTest(unittest.TestCase):
 
         self.assertTrue(actual)
 
+    def test_is_equal_bool_with_string_bool(self):
+        left = "true"
+        right = "false"
+
+        actual = is_equal_bool(left, right)
+
+        self.assertFalse(actual)
+
     def test_dict_to_array(self):
         obj = {"first": "Hello", "second": "How are you?"}
         expected = ["Hello", "How are you?"]
