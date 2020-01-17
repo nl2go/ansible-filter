@@ -1,4 +1,10 @@
 language: python
+python:
+  - "2.7"
+  - "3.5"
+  - "3.6"
+  - "3.7"
+  - "3.8"
 
 before_script:
   - pip install ansible coverage codecov
@@ -12,6 +18,7 @@ deploy:
   password:
     secure: JvM2bmewe7ciruUza+4OeDlV99ci5KgUFLl3ggb7rt6R4KULNU4C8NLgM4jXAtswvns9EG6PU42hX9QQtc8SSW9IFGzqZp3aglw3z9z/9ge1vNfEL1Zcjgup8/n+4yHBIj7VyuFwH7aFjmiKCh8sVX9PUo23stEx+L0xqGJcfhIJDl7S2+J3jnpG/b8/06ACbzqDAphOpm7JT+9JZhanK1qZ+1HmLYQ+Z4GbqiN/H0vuqetZTQa92ieQDvTXvXWSfv9DuRvZfpnm0gNUyzGUKBgUGSp8N3CfUr+H/HWoye+MsQLSks5M8enLD2c22lZujNnLu00+18J9hk4PuGRtgdeqVV/JYPvmVMr999BsRQlQmp1GKCtmCZSrZ7KT9VpkQ6qOoHaQqxXvXXPYU3/wIegjZii9Oq4N/qtyfRXqpiUKsRIyX/Jc6hwEGUQ219ZwrbLscRXIRj4xPruB4ZNAuQoFYvB8UV8j+oKUa4nh4MkRVm3FCHUFa2sHlENwcdF3uJ+RDfg8ugaG99lCYdemmquUHeIa0MB/LE2vrUKIpAvBBsHKpPHXKPZIhIwawM6xeqrR5WnsTXy6kWrSkiKlZP6oQM6xHLq1z5E4L74iSz7Xrlmfa5SP55qS/yTcIeDzVOsHRDxGLUHdQBehJI9KrCGHLeeHyK2qIB4QGk7vSDU=
   skip_cleanup: true
+  skip_existing: true
   on:
     tags: true
 
