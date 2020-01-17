@@ -13,27 +13,23 @@ def unique_ip_pairs(hostname_list, ansible_host, hostvars, network_interfaces=No
         if ansible_host == remote_ansible_host:
             continue
 
-        ip_pairs = get_ip_pairs_by_hostname(
-            hostname,
-            ansible_host,
-            remote_ansible_host,
-            hostvars[hostname].get("network_interfaces", {}),
-            network_interfaces
-        )
+        results.append({
+            "target_hostname": hostname,
+            "first_ip": ansible_host,
+            "second_ip": remote_ansible_host
+        })
 
-        results += ip_pairs
+        remote_network_interfaces = hostvars[hostname].get("network_interfaces", {})
+        remote_ip_pairs = get_ip_pairs_from_remote_network_interfaces(hostname, ansible_host, remote_network_interfaces)
+        source_ip_pairs = get_ip_pairs_from_network_interfaces(hostname, remote_ansible_host, network_interfaces)
+
+        results = results + remote_ip_pairs + source_ip_pairs
 
     return results
 
 
-def get_ip_pairs_by_hostname(
-        hostname, ansible_host, remote_ansible_host, remote_network_interfaces, network_interfaces
-):
-    ip_pairs = [{
-        "target_hostname": hostname,
-        "first_ip": ansible_host,
-        "second_ip": remote_ansible_host
-    }]
+def get_ip_pairs_from_remote_network_interfaces(hostname, ansible_host, remote_network_interfaces):
+    ip_pairs = []
 
     for interface_name, interface in remote_network_interfaces.items():
         interface_ip = interface.get("ipaddress")
@@ -46,6 +42,12 @@ def get_ip_pairs_by_hostname(
             "first_ip": ansible_host,
             "second_ip": interface_ip
         })
+
+    return ip_pairs
+
+
+def get_ip_pairs_from_network_interfaces(hostname, remote_ansible_host, network_interfaces):
+    ip_pairs = []
 
     for interface_name, interface in network_interfaces.items():
         interface_ip = interface.get("ipaddress")

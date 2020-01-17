@@ -1,7 +1,7 @@
 import sys
 import unittest
 
-from ansible_filter.ipsec import unique_ip_pairs, get_ip_pairs_by_hostname
+from ansible_filter.ipsec import unique_ip_pairs
 
 
 class IpsecTest(unittest.TestCase):
