@@ -2,10 +2,13 @@
 
 
 def unique_ip_pairs(hostname_list, ansible_host, hostvars, network_interfaces=None):
+    results = []
+
+    if len(hostname_list) <= 1:
+        return results
+
     if not network_interfaces:
         network_interfaces = {}
-
-    results = []
 
     for hostname in hostname_list:
         remote_ansible_host = hostvars[hostname].get("ansible_host")

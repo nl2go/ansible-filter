@@ -30,6 +30,7 @@ class IpsecTest(unittest.TestCase):
         second_source_interface = {}
 
         hostname = "hostname"
+        other_hostname = "other_hostname"
         ansible_host = "ansible_host"
         remote_ansible_host = "remote_ansible_host"
         network_interfaces = {
@@ -37,9 +38,12 @@ class IpsecTest(unittest.TestCase):
             "second_source_interface": second_source_interface
         }
 
-        hostname_list = [hostname]
+        hostname_list = [hostname, other_hostname]
         hostvars = {
             hostname: {
+                "ansible_host": remote_ansible_host,
+            },
+            other_hostname: {
                 "ansible_host": remote_ansible_host,
             }
         }
@@ -52,6 +56,17 @@ class IpsecTest(unittest.TestCase):
             },
             {
                 "target_hostname": hostname,
+                "source_interface": "first_source_interface",
+                "first_ip": "127.0.0.1",
+                "second_ip": remote_ansible_host
+            },
+            {
+                "target_hostname": other_hostname,
+                "first_ip": ansible_host,
+                "second_ip": remote_ansible_host
+            },
+            {
+                "target_hostname": other_hostname,
                 "source_interface": "first_source_interface",
                 "first_ip": "127.0.0.1",
                 "second_ip": remote_ansible_host
@@ -72,6 +87,7 @@ class IpsecTest(unittest.TestCase):
         second_remote_interface = {}
 
         hostname = "hostname"
+        other_hostname = "other_hostname"
         ansible_host = "ansible_host"
         remote_ansible_host = "remote_ansible_host"
         remote_network_interfaces = {
@@ -80,9 +96,13 @@ class IpsecTest(unittest.TestCase):
         }
         network_interfaces = None
 
-        hostname_list = [hostname]
+        hostname_list = [hostname, other_hostname]
         hostvars = {
             hostname: {
+                "ansible_host": remote_ansible_host,
+                "network_interfaces": remote_network_interfaces
+            },
+            other_hostname: {
                 "ansible_host": remote_ansible_host,
                 "network_interfaces": remote_network_interfaces
             }
@@ -99,6 +119,17 @@ class IpsecTest(unittest.TestCase):
                 "target_interface": "first_remote_interface",
                 "first_ip": ansible_host,
                 "second_ip": "127.0.0.1"
+            },
+            {
+                "target_hostname": other_hostname,
+                "first_ip": ansible_host,
+                "second_ip": remote_ansible_host
+            },
+            {
+                "target_hostname": other_hostname,
+                "target_interface": "first_remote_interface",
+                "first_ip": ansible_host,
+                "second_ip": "127.0.0.1"
             }
         ]
 
@@ -108,3 +139,17 @@ class IpsecTest(unittest.TestCase):
             self.assertItemsEqual(expected, actual)
         else:
             self.assertListEqual(expected, actual)
+
+    def test_unique_ip_pairs_with_single_hostname(self):
+        hostname = "hostname"
+        ansible_host = "ansible_host"
+        network_interfaces = None
+
+        hostname_list = [hostname]
+        hostvars = {}
+
+        expected = []
+
+        actual = unique_ip_pairs(hostname_list, ansible_host, hostvars, network_interfaces)
+
+        self.assertEqual(expected, actual)
