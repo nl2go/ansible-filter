@@ -72,7 +72,7 @@ class NetworkEncryptionTest(unittest.TestCase):
                 hostvars,
                 interface_name
             )
-        actual = context.exception
+        actual = str(context.exception)
 
         self.assertIn(expected, actual)
 
