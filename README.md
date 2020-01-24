@@ -7,7 +7,7 @@
 # Ansible Filter
 
 Contains [Ansible](https://www.ansible.com/) related filter set for collection/object operations. Aims to extend the official
-[Ansible Filters]([filters](https://docs.ansible.com/ansible/latest/user_guide/playbooks_filters.html)).
+[Ansible Filters](https://docs.ansible.com/ansible/latest/user_guide/playbooks_filters.html).
 
 Available filters are listed [below](#filters).
 
