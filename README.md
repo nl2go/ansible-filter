@@ -4,13 +4,12 @@
 [![PyPI](https://img.shields.io/pypi/v/ansible-filter)](https://pypi.org/project/ansible-filter/#history)
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/ansible-filter)](https://pypi.org/project/ansible-filter/#files)
 
-# Ansible Filter Hetzner
+# Ansible Filter
 
-Filter plugin set to interact with the [Hetzer Robot API](https://robot.your-server.de/doc/webservice/en.html) using [Ansible](https://www.ansible.com/).
-Following functionality is provided:
-- Compute the resource change set between local and origin state.
-- URL encode request body
-- Filter dictionary by key
+Contains [Ansible](https://www.ansible.com/) related filter set for collection/object operations. Aims to extend the official
+[Ansible Filters]([filters](https://docs.ansible.com/ansible/latest/user_guide/playbooks_filters.html)).
+
+Available filters are listed [below](#filters).
 
 ## Install
 
@@ -120,6 +119,75 @@ Converts a list to dict by key attribute.
     print(result)
     
     {'1': {'foo': 'bar', 'id': '1'}, '2': {'id': '2', 'foz': 'baz'}}
+
+### Point to Point Connections
+Resolves point to point connections between the local and remote hosts.
+
+    from ansible_filter import network
+    
+    remote_hostnames = ['two', 'three']
+    hostname = 'one'
+    hostvars = {
+        'one': {
+            'ansible_default_ipv4': {
+                'interface': 'eth0'
+            },
+            'ansible_eth0': {
+                'ipv4': {
+                    'address': '127.0.0.1',
+                }
+            }
+        },
+        'two': {
+            'ansible_default_ipv4': {
+                'interface': 'eth0'
+            },
+            'ansible_eth0': {
+                'ipv4': {
+                    'address': '127.0.0.2',
+                }
+            }
+        },
+        'three': {
+            'ansible_default_ipv4': {
+                'interface': 'eth0'
+            },
+            'ansible_eth0': {
+                'ipv4': {
+                    'address': '127.0.0.3',
+                }
+            }        
+        }
+    }
+    
+    result = network.get_point_to_point_connections(remote_hostnames, hostname, hostvars)
+
+    [
+      {
+        'remote': {
+          'interface': 'eth0',
+          'hostname': 'two',
+          'address': '127.0.0.2'
+        },
+        'local': {
+          'interface': 'eth0',
+          'hostname': 'one',
+          'address': '127.0.0.1'
+        }
+      },
+      {
+        'remote': {
+          'interface': 'eth0',
+          'hostname': 'three',
+          'address': '127.0.0.3'
+        },
+        'local': {
+          'interface': 'eth0',
+          'hostname': 'one',
+          'address': '127.0.0.1'
+        }
+      }
+    ]
 
 ## Links
 
