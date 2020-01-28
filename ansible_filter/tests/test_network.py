@@ -1,9 +1,9 @@
 import unittest
 
-from ansible_filter.network_encryption import *
+from ansible_filter.network import *
 
 
-class NetworkEncryptionTest(unittest.TestCase):
+class NetworkTest(unittest.TestCase):
     def test_single(self):
         local_hostname = "local_hostname"
         remote_hostname = local_hostname

@@ -1,5 +1,4 @@
 #!/usr/bin/python
-from ansible_filter.helpers import array_to_dict
 
 
 def get_custom_interface_name_or_default(
