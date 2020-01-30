@@ -44,8 +44,10 @@ def str2bool(v):
 def is_equal_obj(local_obj, origin_obj):
     result = None
 
-    if is_all_empty(local_obj, origin_obj) or is_any_bool(local_obj, origin_obj):
+    if is_all_empty(local_obj, origin_obj):
         result = True
+    elif is_any_bool(local_obj, origin_obj):
+        result = is_equal_bool(local_obj, origin_obj)
     elif is_all_dict(local_obj, origin_obj):
         result = is_equal_dict(local_obj, origin_obj)
     elif is_list(local_obj) and is_list(origin_obj):
