@@ -243,3 +243,23 @@ class ChangeSetTest(unittest.TestCase):
         actual = str2bool(v)
 
         self.assertTrue(actual)
+
+    def test_change_set_bool(self):
+        origin = [
+            {
+                "id": 1,
+                "is_default": False,
+                "name": "foo",
+            }
+        ]
+        local = [
+            {
+                "is_default": True,
+                "name": "foo",
+            }
+        ]
+        expected = {'create': [], 'noop': [], 'delete': [], 'update': [{'id': 1, 'is_default': True, 'name': 'foo'}]}
+
+        actual = change_set(local, origin)
+
+        self.assertEqual(actual, expected)
