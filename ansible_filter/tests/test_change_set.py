@@ -210,6 +210,14 @@ class ChangeSetTest(unittest.TestCase):
 
         self.assertFalse(actual)
 
+    def test_is_equal_list_with_different_length(self):
+        left = ["one"]
+        right = ["two", "three"]
+
+        actual = is_equal_list(left, right)
+
+        self.assertFalse(actual)
+
     def test_is_equal_bool(self):
         left = True
         right = True

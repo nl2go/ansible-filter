@@ -67,6 +67,9 @@ def is_equal_bool(left, right):
 
 
 def is_equal_list(left, right):
+    if len(left) != len(right):
+        return False
+
     for i in range(len(left)):
         local_value = left[i]
         origin_value = right[i]
